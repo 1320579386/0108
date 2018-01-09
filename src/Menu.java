@@ -17,21 +17,27 @@ public class Menu {
                 "1.查看车辆信息\n" +
                 "2.确认租车\n" +
                 "3.退出系统");
-        int option = scanner.nextInt();
-        switch (option) {
-            case 1:
-                browse();
-                break;
-            case 2:
-                confirm();
-                break;
-            case 3:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("请输入正确的指令\n");
-                main();
-                break;
+        String Option = scanner.next();
+        if (judge(Option)) {
+            int option = Integer.valueOf(Option);
+            switch (option) {
+                case 1:
+                    browse();
+                    break;
+                case 2:
+                    confirm();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("请输入正确的指令\n");
+                    main();
+                    break;
+            }
+        } else {
+            System.out.println("请输入正确的指令\n");
+            main();
         }
     }
 
@@ -56,75 +62,81 @@ public class Menu {
                 "2.货车（剩余" + truck.quantity + "辆)\n" +
                 "3.返回主菜单");
         String Quantity;
-        int option = scanner.nextInt();
-        switch (option) {
-            case 1:
-                System.out.println("请输入客车数量");
-                Quantity = scanner.next();
-                if (judge(Quantity)) {
-                    int quantity = Integer.valueOf(Quantity);
-                    if (coach.quantity >= quantity) {
-                        coach.quantity = coach.quantity - quantity;
-                        System.out.println("请输入租车天数(整数)");
-                        int days = scanner.nextInt();
-                        System.out.println("租车成功，共计金额" + quantity * days * coach.price + "元");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+        String Option = scanner.next();
+        if (judge(Option)) {
+            int option = Integer.valueOf(Option);
+            switch (option) {
+                case 1:
+                    System.out.println("请输入客车数量");
+                    Quantity = scanner.next();
+                    if (judge(Quantity)) {
+                        int quantity = Integer.valueOf(Quantity);
+                        if (coach.quantity >= quantity) {
+                            coach.quantity = coach.quantity - quantity;
+                            System.out.println("请输入租车天数(整数)");
+                            int days = scanner.nextInt();
+                            System.out.println("租车成功，共计金额" + quantity * days * coach.price + "元");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            main();
+                        } else {
+                            System.out.println("车辆库存不足，请减少数量\n");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            confirm();
                         }
-                        main();
                     } else {
-                        System.out.println("车辆库存不足，请减少数量\n");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        System.out.println("请输入正整数\n");
                         confirm();
                     }
-                } else {
-                    System.out.println("请输入正整数\n");
-                    confirm();
-                }
-                break;
-            case 2:
-                System.out.println("请输入货车数量");
-                Quantity = scanner.next();
-                if (judge(Quantity)) {
-                    int quantity = Integer.valueOf(Quantity);
-                    if (truck.quantity >= quantity) {
-                        truck.quantity = truck.quantity - quantity;
-                        System.out.println("请输入租车天数(整数)");
-                        int days = scanner.nextInt();
-                        System.out.println("租车成功，共计金额" + quantity * days * truck.price + "元");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                    break;
+                case 2:
+                    System.out.println("请输入货车数量");
+                    Quantity = scanner.next();
+                    if (judge(Quantity)) {
+                        int quantity = Integer.valueOf(Quantity);
+                        if (truck.quantity >= quantity) {
+                            truck.quantity = truck.quantity - quantity;
+                            System.out.println("请输入租车天数(整数)");
+                            int days = scanner.nextInt();
+                            System.out.println("租车成功，共计金额" + quantity * days * truck.price + "元");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            main();
+                        } else {
+                            System.out.println("车辆库存不足，请减少数量\n");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            confirm();
                         }
-                        main();
                     } else {
-                        System.out.println("车辆库存不足，请减少数量\n");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        System.out.println("请输入正整数\n");
                         confirm();
                     }
-                } else {
-                    System.out.println("请输入正整数\n");
+                    break;
+                case 3:
+                    main();
+                    break;
+                default:
+                    System.out.println("请输入正确的指令\n");
                     confirm();
-                }
-                break;
-            case 3:
-                main();
-                break;
-            default:
-                System.out.println("请输入正确的指令\n");
-                confirm();
-                break;
+                    break;
+            }
+        } else {
+            System.out.println("请输入正确的指令\n");
+            confirm();
         }
     }
 
