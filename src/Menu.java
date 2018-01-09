@@ -17,9 +17,9 @@ public class Menu {
                 "1.查看车辆信息\n" +
                 "2.确认租车\n" +
                 "3.退出系统");
-        String Option = scanner.next();
-        if (judge(Option)) {
-            int option = Integer.parseInt(Option);
+        String mainOption = scanner.next();
+        if (judge(mainOption)) {
+            int option = Integer.parseInt(mainOption);
             switch (option) {
                 case 1:
                     browse();
@@ -61,16 +61,16 @@ public class Menu {
                 "1.客车（剩余" + coach.quantity + "辆)\n" +
                 "2.货车（剩余" + truck.quantity + "辆)\n" +
                 "3.返回主菜单");
-        String Quantity;
-        String Option = scanner.next();
-        if (judge(Option)) {
-            int option = Integer.parseInt(Option);
+        String confirmQuantity;
+        String confirmOption = scanner.next();
+        if (judge(confirmOption)) {
+            int option = Integer.parseInt(confirmOption);
             switch (option) {
                 case 1:
                     System.out.println("请输入客车数量");
-                    Quantity = scanner.next();
-                    if (judge(Quantity)) {
-                        int quantity = Integer.parseInt(Quantity);
+                    confirmQuantity = scanner.next();
+                    if (judge(confirmQuantity)) {
+                        int quantity = Integer.parseInt(confirmQuantity);
                         if (coach.quantity >= quantity) {
                             coach.quantity = coach.quantity - quantity;
                             System.out.println("请输入租车天数(整数)");
@@ -98,9 +98,9 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("请输入货车数量");
-                    Quantity = scanner.next();
-                    if (judge(Quantity)) {
-                        int quantity = Integer.parseInt(Quantity);
+                    confirmQuantity = scanner.next();
+                    if (judge(confirmQuantity)) {
+                        int quantity = Integer.parseInt(confirmQuantity);
                         if (truck.quantity >= quantity) {
                             truck.quantity = truck.quantity - quantity;
                             System.out.println("请输入租车天数(整数)");
