@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @date 2018/01/08
  */
 public class Menu {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in,"UTF-8");
     private Coach coach = new Coach();
     private Truck truck = new Truck();
     private static Pattern pattern = Pattern.compile("[0-9]*");
@@ -19,7 +19,7 @@ public class Menu {
                 "3.退出系统");
         String Option = scanner.next();
         if (judge(Option)) {
-            int option = Integer.valueOf(Option);
+            int option = Integer.parseInt(Option);
             switch (option) {
                 case 1:
                     browse();
@@ -64,13 +64,13 @@ public class Menu {
         String Quantity;
         String Option = scanner.next();
         if (judge(Option)) {
-            int option = Integer.valueOf(Option);
+            int option = Integer.parseInt(Option);
             switch (option) {
                 case 1:
                     System.out.println("请输入客车数量");
                     Quantity = scanner.next();
                     if (judge(Quantity)) {
-                        int quantity = Integer.valueOf(Quantity);
+                        int quantity = Integer.parseInt(Quantity);
                         if (coach.quantity >= quantity) {
                             coach.quantity = coach.quantity - quantity;
                             System.out.println("请输入租车天数(整数)");
@@ -100,7 +100,7 @@ public class Menu {
                     System.out.println("请输入货车数量");
                     Quantity = scanner.next();
                     if (judge(Quantity)) {
-                        int quantity = Integer.valueOf(Quantity);
+                        int quantity = Integer.parseInt(Quantity);
                         if (truck.quantity >= quantity) {
                             truck.quantity = truck.quantity - quantity;
                             System.out.println("请输入租车天数(整数)");
