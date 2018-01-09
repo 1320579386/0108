@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @date 2018/01/08
  */
 public class Menu {
-    private Scanner scanner = new Scanner(System.in,"UTF-8");
+    private Scanner scanner = new Scanner(System.in, "UTF-8");
     private Coach coach = new Coach();
     private Truck truck = new Truck();
     private static Pattern pattern = Pattern.compile("[0-9]*");
